@@ -9,11 +9,9 @@
     ]
   },
   "scripts": {
-    "prepare": "husky install",
-    "rebuild-markdown": "embedme './**/*.md'"
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "embedme": "^1.22.0",
     "husky": "^7.0.0"
   }
 }
