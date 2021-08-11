@@ -28,4 +28,5 @@ jobs:
           cache: 'yarn'
 
       - run: yarn install
+      - run: yarn --cwd examples/latest/ tsc --build
       - run: yarn --cwd examples/latest build
