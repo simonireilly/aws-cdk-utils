@@ -1,0 +1,163 @@
+digraph "Diagram" {
+  splines = "ortho";
+  pad = "1.0";
+  nodesep = "0.60";
+  ranksep = "0.75";
+  fontname = "Sans-Serif";
+  fontsize = "15";
+  dpi = "200";
+  rankdir = "BT";
+  compound = "true";
+  fontcolor = "#222222";
+  edge [
+    color = "#D5871488",
+    penwidth = 2,
+    arrowhead = "dot",
+    arrowtail = "dot",
+  ];
+  node [
+    shape = "box",
+    style = "rounded",
+    fixedsize = true,
+    width = 1.7,
+    height = 1.7,
+    labelloc = "c",
+    imagescale = true,
+    fontname = "Sans-Serif",
+    fontsize = 8,
+    margin = 8,
+  ];
+  subgraph "dev-custom-resources-my-stack" {
+    subgraph "cluster-SubGraph.dev-custom-resources-my-stack" {
+      graph [
+        label = "dev-custom-resources-my-stack",
+        labelloc = "b",
+        labeljust = "l",
+        margin = "10",
+        fontsize = "16",
+        penwidth = "2",
+        pencolor = "#888888",
+        style = "filled,rounded",
+        fillcolor = "#e4e4e4",
+      ];
+      subgraph "cluster-SubGraph.SendSecretsToVercel" {
+        graph [
+          label = "SendSecretsToVercel",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "dev-custom-resources-my-stack/SendSecretsToVercel/VercelSecretCustomResourceFunction" [
+          label = "\nVercelSecretCustomRes",
+          fontsize = 12,
+          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "dev-custom-resources-my-stack/SendSecretsToVercel/VercelSecretCustomResource" [
+          label = " CloudFormation\nCustomResource",
+          fontsize = 12,
+          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_AWS-CloudFormation_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+      }
+      subgraph "cluster-SubGraph.AuthBase" {
+        graph [
+          label = "AuthBase",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "dev-custom-resources-my-stack/AuthBase/UserPool" [
+          label = " UserPool",
+          fontsize = 12,
+        ];
+        "dev-custom-resources-my-stack/AuthBase/UserPoolClient" [
+          label = " UserPoolClient",
+          fontsize = 12,
+        ];
+        "dev-custom-resources-my-stack/AuthBase/IdentityPool" [
+          label = " COGNITO IDENTITYPOOL\nIdentityPool",
+          fontsize = 12,
+        ];
+        "dev-custom-resources-my-stack/AuthBase/IdentityPoolAuthRole" [
+          label = " IdentityPoolAuthRole",
+          fontsize = 12,
+          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "dev-custom-resources-my-stack/AuthBase/IdentityPoolUnauthRole" [
+          label = "\nIdentityPoolUnauthRol",
+          fontsize = 12,
+          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "dev-custom-resources-my-stack/AuthBase/IdentityPoolRoleAttachment" [
+          label = " COGNITO",
+          fontsize = 12,
+        ];
+      }
+    }
+  }
+  "dev-custom-resources-my-stack/AuthBase/UserPoolClient" -> "dev-custom-resources-my-stack/AuthBase/UserPool" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPool" -> "dev-custom-resources-my-stack/AuthBase/UserPool" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPool" -> "dev-custom-resources-my-stack/AuthBase/UserPoolClient" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPoolAuthRole" -> "dev-custom-resources-my-stack/AuthBase/IdentityPool" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPoolUnauthRole" -> "dev-custom-resources-my-stack/AuthBase/IdentityPool" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPoolRoleAttachment" -> "dev-custom-resources-my-stack/AuthBase/IdentityPool" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPoolRoleAttachment" -> "dev-custom-resources-my-stack/AuthBase/IdentityPoolAuthRole" [
+    dir = "both",
+  ];
+  "dev-custom-resources-my-stack/AuthBase/IdentityPoolRoleAttachment" -> "dev-custom-resources-my-stack/AuthBase/IdentityPoolUnauthRole" [
+    dir = "both",
+  ];
+}
