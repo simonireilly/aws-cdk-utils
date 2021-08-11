@@ -11,3 +11,8 @@ A Cloudformation custom resource that can be used to forward the output from sta
 
 - [x] Returns the preview url statically to use in other dependant resources
 - [x] Returns a function to bind in secrets to set in the custom resource
+
+## Example
+
+```
+```

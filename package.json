@@ -8,8 +8,12 @@
       "examples/*"
     ]
   },
+  "scripts": {
+    "prepare": "husky install",
+    "rebuild-markdown": "embedme '_posts/**/*.md'"
+  },
   "devDependencies": {
     "embedme": "^1.22.0",
-    "husky": "^7.0.1"
+    "husky": "^7.0.0"
   }
 }
