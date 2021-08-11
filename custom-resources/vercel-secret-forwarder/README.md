@@ -15,9 +15,20 @@ A Cloudformation custom resource that can be used to forward the output from sta
 
 ## Example
 
+### Configure Secrets in GitHub Actions
+
+[source](https://cli.github.com/manual/gh_secret_set)
+
 Create a .env file with the secrets needed:
 
 ```env
+AWS_ACCESS_KEY_ID=AK*******
+AWS_SECRET_ACCESS_KEY=456j3*******
+VERCEL_AUTH_TOKEN=pk_3*********
+VERCEL_ORGANISATION_NAME=<team-name>
+VERCEL_PROJECT_ID=pkf_
+VERCEL_PROJECT_NAME=
+
 ```
 
 To set this up with github do the following:

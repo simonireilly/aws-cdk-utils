@@ -71,6 +71,7 @@ const uploadSecretBatch = ({
 }: Omit<UploadSecretProps, 'key' | 'value'> & {
   keyValuePairs: VercelSecretSyncConstructProps['VercelEnvironmentVariables'];
 }): Array<ReturnType<typeof uploadSecret>> => {
+  console.info('Sending all secrets');
   return Object.entries(keyValuePairs).map<Promise<any>>(([key, value]) => {
     return uploadSecret({
       authToken,

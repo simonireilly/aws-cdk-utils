@@ -19,6 +19,8 @@ export const uploadSecret = async ({
   target = ['preview'],
   authToken,
 }: UploadSecretProps) => {
+  console.info(`Sending secret ${key} to branch ${gitBranch}`);
+
   return axios.post(
     `https://api.vercel.com/v8/projects/${projectId}/env`,
     {
