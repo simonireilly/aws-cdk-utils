@@ -56,6 +56,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     res = await sendSuccessMessage(event);
   } catch (e) {
+    console.error(e);
     res = await sendFailureMessage(event);
   }
 

@@ -40,7 +40,7 @@ export const sendSuccessMessage = async (
     StackId: event.StackId,
   };
 
-  console.info('Sending success response', successResponse);
+  console.info('Sending failure response', successResponse);
 
   const data = JSON.stringify(successResponse);
   return await axios.put(event.ResponseURL, data, {
