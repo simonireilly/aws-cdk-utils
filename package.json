@@ -9,7 +9,8 @@
     ]
   },
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },
   "devDependencies": {
     "husky": "^7.0.0"

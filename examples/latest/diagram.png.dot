@@ -55,7 +55,7 @@ digraph "Diagram" {
         "dev-custom-resources-my-stack/SendSecretsToVercel/VercelSecretCustomResourceFunction" [
           label = "\nVercelSecretCustomRes",
           fontsize = 12,
-          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          image = "/home/simon/code/stacks/custom-resources/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
           imagescale = "true",
           imagepos = "tc",
           penwidth = "0",
@@ -68,7 +68,7 @@ digraph "Diagram" {
         "dev-custom-resources-my-stack/SendSecretsToVercel/VercelSecretCustomResource" [
           label = " CloudFormation\nCustomResource",
           fontsize = 12,
-          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_AWS-CloudFormation_64@5x.png",
+          image = "/home/simon/code/stacks/custom-resources/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_AWS-CloudFormation_64@5x.png",
           imagescale = "true",
           imagepos = "tc",
           penwidth = "0",
@@ -106,7 +106,7 @@ digraph "Diagram" {
         "dev-custom-resources-my-stack/AuthBase/IdentityPoolAuthRole" [
           label = " IdentityPoolAuthRole",
           fontsize = 12,
-          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+          image = "/home/simon/code/stacks/custom-resources/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
           imagescale = "true",
           imagepos = "tc",
           penwidth = "0",
@@ -119,7 +119,7 @@ digraph "Diagram" {
         "dev-custom-resources-my-stack/AuthBase/IdentityPoolUnauthRole" [
           label = "\nIdentityPoolUnauthRol",
           fontsize = 12,
-          image = "/home/simon/.npm/_npx/44263/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+          image = "/home/simon/code/stacks/custom-resources/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
           imagescale = "true",
           imagepos = "tc",
           penwidth = "0",

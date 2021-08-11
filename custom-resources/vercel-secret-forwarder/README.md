@@ -14,5 +14,6 @@ A Cloudformation custom resource that can be used to forward the output from sta
 
 ## Example
 
-```
+```ts
+
 ```
