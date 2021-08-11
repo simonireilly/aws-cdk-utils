@@ -7,5 +7,9 @@
       "custom-resources/*",
       "examples/*"
     ]
+  },
+  "devDependencies": {
+    "embedme": "^1.22.0",
+    "husky": "^7.0.1"
   }
 }
