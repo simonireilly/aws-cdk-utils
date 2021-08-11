@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "rebuild-markdown": "embedme '_posts/**/*.md'"
+    "rebuild-markdown": "embedme './**/*.md'"
   },
   "devDependencies": {
     "embedme": "^1.22.0",
