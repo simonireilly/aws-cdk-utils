@@ -1,5 +1,5 @@
 import { CloudFormationCustomResourceHandler } from 'aws-lambda';
-import { uploadSecret, UploadSecretProps } from './api';
+import { getEnv, updateSecret, createSecret, UploadSecretProps } from './api';
 import type { VercelSecretSyncConstructProps } from '..';
 import { sendFailureMessage, sendSuccessMessage } from './cloudformation';
 import { AxiosError } from 'axios';
@@ -30,7 +30,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     switch (event.RequestType) {
       case 'Create':
-        promises = uploadSecretBatch({
+        promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
           gitBranch: GitBranch,
@@ -39,7 +39,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Update':
-        promises = uploadSecretBatch({
+        promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
           gitBranch: GitBranch,
@@ -67,7 +67,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
   console.info('Completed sending secret with config');
 };
 
-const uploadSecretBatch = ({
+const upsertSecretBranch = async ({
   keyValuePairs,
   authToken,
   gitBranch,
@@ -75,16 +75,44 @@ const uploadSecretBatch = ({
   target,
 }: Omit<UploadSecretProps, 'key' | 'value'> & {
   keyValuePairs: VercelSecretSyncConstructProps['VercelEnvironmentVariables'];
-}): Array<ReturnType<typeof uploadSecret>> => {
-  console.info('Sending all secrets');
-  return Object.entries(keyValuePairs).map<Promise<any>>(([key, value]) => {
-    return uploadSecret({
-      authToken,
-      gitBranch,
-      key,
-      value,
-      projectId,
-      target,
-    });
+}): Promise<
+  Array<ReturnType<typeof createSecret> | ReturnType<typeof updateSecret>>
+> => {
+  console.info('Fetching all secrets, not decrypting');
+  const env = await getEnv({ projectId, authToken });
+
+  // If an env exists, do a put to updated it
+  const updateRequests = env.data.envs.map(({ key, id }) => {
+    if (keyValuePairs[key]) {
+      const value = keyValuePairs[key];
+      delete keyValuePairs[key];
+      return updateSecret({
+        authToken,
+        gitBranch,
+        key,
+        value,
+        projectId,
+        target,
+        id,
+      });
+    }
+
+    return;
   });
+
+  // If the secret did not exist, then send a a POST request
+  const createRequests = Object.entries(keyValuePairs).map<Promise<any>>(
+    ([key, value]) => {
+      return createSecret({
+        authToken,
+        gitBranch,
+        key,
+        value,
+        projectId,
+        target,
+      });
+    }
+  );
+
+  return [...updateRequests, ...createRequests];
 };
