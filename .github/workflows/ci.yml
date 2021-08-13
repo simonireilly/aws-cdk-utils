@@ -29,7 +29,6 @@ jobs:
 
       - run: yarn install
       - run: yarn --cwd examples/latest/ tsc --build
-      - run: yarn --cwd examples/latest build
       - run: yarn --cwd examples/latest deploy
         env:
           GIT_BRANCH: ${{ github.event.pull_request.head.ref }}
