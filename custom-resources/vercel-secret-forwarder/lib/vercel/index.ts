@@ -30,6 +30,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     switch (event.RequestType) {
       case 'Create':
+        console.info('Processing Create');
         promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
@@ -39,6 +40,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Update':
+        console.info('Processing Update');
         promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
@@ -48,6 +50,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Delete':
+        console.info('Processing Delete');
         break;
     }
 
@@ -81,11 +84,10 @@ const upsertSecretBranch = async ({
   console.info('Fetching all secrets, not decrypting');
   const env = await getEnv({ projectId, authToken });
 
+  // We need to update existing secrets
   const secretsToUpdate = env.data.envs.filter(({ key }) => keyValuePairs[key]);
 
-  const secretsToCreate = env.data.envs.filter(
-    ({ key }) => !keyValuePairs[key]
-  );
+  const secretsToCreate = Object.keys(keyValuePairs).map((key) => {});
 
   // If an env exists, do a put to updated it
   const updateRequests = secretsToUpdate.map(({ key, id }) => {
