@@ -18,6 +18,7 @@ export default function Home() {
 
         <p className={styles.description}>Get started by editing</p>
         <pre>secret: {process.env.NEXT_PUBLIC_LOCAL_TEST}</pre>
+        <p>Test git changes</p>
       </main>
 
       <footer className={styles.footer}>
