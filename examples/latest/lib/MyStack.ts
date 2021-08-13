@@ -7,14 +7,15 @@ export default class MyStack extends sst.Stack {
     super(scope, id, props);
 
     const vercel = new VercelSecretSyncConstruct(this, 'SendSecretsToVercel', {
-      GitBranch: 'test',
-      VercelAuthToken: 'example',
+      GitBranch: String(process.env.GIT_BRANCH),
+      VercelAuthToken: String(process.env.VERCEL_AUTH_TOKEN),
       VercelEnvironmentVariables: {
-        NEXT_PUBLIC_TEST_LOCAL: 'Preview domain',
+        NEXT_PUBLIC_LOCAL_TEST: 'Preview domain',
+        PRIVATE_TEST: 'This is a test one',
       },
-      VercelProjectId: 'is',
-      VercelProjectName: 'my',
-      VercelProjectOrganisation: 'project',
+      VercelProjectId: String(process.env.VERCEL_PROJECT_ID),
+      VercelProjectName: String(process.env.VERCEL_PROJECT_NAME),
+      VercelProjectOrganisation: String(process.env.VERCEL_ORGANISATION_NAME),
     });
 
     const auth = new sst.Auth(this, 'AuthBase', {
@@ -35,6 +36,7 @@ export default class MyStack extends sst.Stack {
       },
     });
 
+    // Hook in to add a secret, to a dependency that is only known at deploy time
     vercel.addSecret(
       'NEXT_PUBLIC_PREVIEW_URL',
       auth.cognitoUserPoolClient?.userPoolClientId as string

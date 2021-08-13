@@ -1,7 +1,8 @@
 import { CloudFormationCustomResourceHandler } from 'aws-lambda';
-import { uploadSecret, UploadSecretProps } from './api';
+import { getEnv, updateSecret, createSecret, UploadSecretProps } from './api';
 import type { VercelSecretSyncConstructProps } from '..';
 import { sendFailureMessage, sendSuccessMessage } from './cloudformation';
+import { AxiosError } from 'axios';
 
 export const handler: CloudFormationCustomResourceHandler = async (
   event,
@@ -25,44 +26,51 @@ export const handler: CloudFormationCustomResourceHandler = async (
       GitBranch,
     });
 
+    const upsertAction = async () =>
+      upsertSecretBranch({
+        keyValuePairs: VercelEnvironmentVariables,
+        authToken: VercelAuthToken,
+        gitBranch: GitBranch,
+        projectId: VercelProjectId,
+        target: ['preview'],
+      });
+
     let promises: Array<Promise<any>> = [];
 
     switch (event.RequestType) {
       case 'Create':
-        promises = uploadSecretBatch({
-          keyValuePairs: VercelEnvironmentVariables,
-          authToken: VercelAuthToken,
-          gitBranch: GitBranch,
-          projectId: VercelProjectId,
-          target: ['preview'],
-        });
+        console.info('Performing create action');
+        promises = await upsertAction();
         break;
       case 'Update':
-        promises = uploadSecretBatch({
-          keyValuePairs: VercelEnvironmentVariables,
-          authToken: VercelAuthToken,
-          gitBranch: GitBranch,
-          projectId: VercelProjectId,
-          target: ['preview'],
-        });
+        console.info('Performing update action');
+        promises = await upsertAction();
         break;
       case 'Delete':
+        console.info('Performing delete action');
         break;
     }
 
     if (promises.length > 0) {
+      console.info('Draining requests to update secrets');
       await Promise.all(promises);
+    } else {
+      console.info('No secrets require upserting');
     }
 
     res = await sendSuccessMessage(event);
   } catch (e) {
+    if (e.response) {
+      const error = e as AxiosError;
+      console.error('Axios API error', { response: error.response?.data });
+    }
     res = await sendFailureMessage(event);
   }
 
   console.info('Completed sending secret with config');
 };
 
-const uploadSecretBatch = ({
+const upsertSecretBranch = async ({
   keyValuePairs,
   authToken,
   gitBranch,
@@ -70,15 +78,52 @@ const uploadSecretBatch = ({
   target,
 }: Omit<UploadSecretProps, 'key' | 'value'> & {
   keyValuePairs: VercelSecretSyncConstructProps['VercelEnvironmentVariables'];
-}): Array<ReturnType<typeof uploadSecret>> => {
-  return Object.entries(keyValuePairs).map<Promise<any>>(([key, value]) => {
-    return uploadSecret({
-      authToken,
-      gitBranch,
-      key,
-      value,
-      projectId,
-      target,
-    });
-  });
+}): Promise<
+  Array<ReturnType<typeof createSecret> | ReturnType<typeof updateSecret>>
+> => {
+  console.info('Fetching all secrets, not decrypting');
+  const env = await getEnv({ projectId, authToken });
+
+  const secretsToUpdate = env.data.envs.filter(({ key }) => keyValuePairs[key]);
+
+  // If an env exists, do a PATCH to updated it
+  //
+  // use reduce, as map requires a return for each, setting undefined
+  const updateRequests = secretsToUpdate.reduce<
+    Array<ReturnType<typeof updateSecret>>
+  >((acc, { key, id }) => {
+    if (keyValuePairs[key]) {
+      const value = keyValuePairs[key];
+      delete keyValuePairs[key];
+      acc.push(
+        updateSecret({
+          authToken,
+          gitBranch,
+          key,
+          value,
+          projectId,
+          target,
+          id,
+        })
+      );
+    }
+
+    return acc;
+  }, []);
+
+  // If the secret did not exist, then send a a POST request
+  const createRequests = Object.entries(keyValuePairs).map<Promise<any>>(
+    ([key, value]) => {
+      return createSecret({
+        authToken,
+        gitBranch,
+        key,
+        value,
+        projectId,
+        target,
+      });
+    }
+  );
+
+  return [...updateRequests, ...createRequests];
 };
