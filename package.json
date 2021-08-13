@@ -9,6 +9,7 @@
     ]
   },
   "scripts": {
+    "clean": "tsc --build --clean",
     "prepare": "husky install",
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },

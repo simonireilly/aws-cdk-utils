@@ -1,0 +1,3 @@
+{
+  "references": [{ "path": "./custom-resources/vercel-secret-forwarder" }]
+}

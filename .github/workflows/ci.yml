@@ -33,3 +33,7 @@ jobs:
       - run: yarn --cwd examples/latest deploy
         env:
           GIT_BRANCH: ${{ github.event.pull_request.head.ref }}
+          VERCEL_AUTH_TOKEN: ${{ secrets.VERCEL_AUTH_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
+          VERCEL_ORGANISATION_NAME: ${{ secrets.VERCEL_ORGANISATION_NAME }}
