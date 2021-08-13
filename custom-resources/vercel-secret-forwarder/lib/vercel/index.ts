@@ -81,38 +81,38 @@ const upsertSecretBranch = async ({
   console.info('Fetching all secrets, not decrypting');
   const env = await getEnv({ projectId, authToken });
 
-  // If an env exists, do a put to updated it
-  const updateRequests = env.data.envs.map(({ key, id }) => {
-    if (keyValuePairs[key]) {
-      const value = keyValuePairs[key];
-      delete keyValuePairs[key];
-      return updateSecret({
-        authToken,
-        gitBranch,
-        key,
-        value,
-        projectId,
-        target,
-        id,
-      });
-    }
+  const secretsToUpdate = env.data.envs.filter(({ key }) => keyValuePairs[key]);
 
-    return;
+  const secretsToCreate = env.data.envs.filter(
+    ({ key }) => !keyValuePairs[key]
+  );
+
+  // If an env exists, do a put to updated it
+  const updateRequests = secretsToUpdate.map(({ key, id }) => {
+    const value = keyValuePairs[key];
+    return updateSecret({
+      authToken,
+      gitBranch,
+      key,
+      value,
+      projectId,
+      target,
+      id,
+    });
   });
 
   // If the secret did not exist, then send a a POST request
-  const createRequests = Object.entries(keyValuePairs).map<Promise<any>>(
-    ([key, value]) => {
-      return createSecret({
-        authToken,
-        gitBranch,
-        key,
-        value,
-        projectId,
-        target,
-      });
-    }
-  );
+  const createRequests = secretsToCreate.map(({ key }) => {
+    const value = keyValuePairs[key];
+    return createSecret({
+      authToken,
+      gitBranch,
+      key,
+      value,
+      projectId,
+      target,
+    });
+  });
 
   return [...updateRequests, ...createRequests];
 };
