@@ -11,6 +11,7 @@ export default class MyStack extends sst.Stack {
       VercelAuthToken: String(process.env.VERCEL_AUTH_TOKEN),
       VercelEnvironmentVariables: {
         NEXT_PUBLIC_LOCAL_TEST: 'Preview domain',
+        PRIVATE_TEST: 'This is a test one',
       },
       VercelProjectId: String(process.env.VERCEL_PROJECT_ID),
       VercelProjectName: String(process.env.VERCEL_PROJECT_NAME),

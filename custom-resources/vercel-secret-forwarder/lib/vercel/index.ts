@@ -30,6 +30,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     switch (event.RequestType) {
       case 'Create':
+        console.info('Performing create action');
         promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
@@ -39,6 +40,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Update':
+        console.info('Performing update action');
         promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
@@ -48,6 +50,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Delete':
+        console.info('Performing delete action');
         break;
     }
 
