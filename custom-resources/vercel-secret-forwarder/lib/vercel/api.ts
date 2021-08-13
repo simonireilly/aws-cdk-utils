@@ -86,7 +86,7 @@ export const updateSecret = async ({
 }: UploadSecretProps & Pick<VercelApi.Env, 'id'>) => {
   console.info(`Updating secret ${key} to branch ${gitBranch}`);
 
-  return axios.put(
+  return axios.patch(
     `${BASE_URL}/v8/projects/${projectId}/env/${id}`,
     {
       type: 'encrypted',
