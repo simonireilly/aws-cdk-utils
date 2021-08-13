@@ -2,6 +2,7 @@ import { CloudFormationCustomResourceHandler } from 'aws-lambda';
 import { uploadSecret, UploadSecretProps } from './api';
 import type { VercelSecretSyncConstructProps } from '..';
 import { sendFailureMessage, sendSuccessMessage } from './cloudformation';
+import { AxiosError } from 'axios';
 
 export const handler: CloudFormationCustomResourceHandler = async (
   event,
@@ -56,7 +57,10 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     res = await sendSuccessMessage(event);
   } catch (e) {
-    console.error(e);
+    if (e.response) {
+      const error = e as AxiosError;
+      console.error('Axios API error', { response: error.response?.data });
+    }
     res = await sendFailureMessage(event);
   }
 
