@@ -10,7 +10,7 @@ export default class MyStack extends sst.Stack {
       GitBranch: String(process.env.GIT_BRANCH),
       VercelAuthToken: String(process.env.VERCEL_AUTH_TOKEN),
       VercelEnvironmentVariables: {
-        NEXT_PUBLIC_TEST_LOCAL: 'Preview domain',
+        NEXT_PUBLIC_LOCAL_TEST: 'Preview domain',
       },
       VercelProjectId: String(process.env.VERCEL_PROJECT_ID),
       VercelProjectName: String(process.env.VERCEL_PROJECT_NAME),
