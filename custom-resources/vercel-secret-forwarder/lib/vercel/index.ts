@@ -26,28 +26,25 @@ export const handler: CloudFormationCustomResourceHandler = async (
       GitBranch,
     });
 
+    const upsertAction = async () =>
+      upsertSecretBranch({
+        keyValuePairs: VercelEnvironmentVariables,
+        authToken: VercelAuthToken,
+        gitBranch: GitBranch,
+        projectId: VercelProjectId,
+        target: ['preview'],
+      });
+
     let promises: Array<Promise<any>> = [];
 
     switch (event.RequestType) {
       case 'Create':
         console.info('Performing create action');
-        promises = await upsertSecretBranch({
-          keyValuePairs: VercelEnvironmentVariables,
-          authToken: VercelAuthToken,
-          gitBranch: GitBranch,
-          projectId: VercelProjectId,
-          target: ['preview'],
-        });
+        promises = await upsertAction();
         break;
       case 'Update':
         console.info('Performing update action');
-        promises = await upsertSecretBranch({
-          keyValuePairs: VercelEnvironmentVariables,
-          authToken: VercelAuthToken,
-          gitBranch: GitBranch,
-          projectId: VercelProjectId,
-          target: ['preview'],
-        });
+        promises = await upsertAction();
         break;
       case 'Delete':
         console.info('Performing delete action');
@@ -55,7 +52,10 @@ export const handler: CloudFormationCustomResourceHandler = async (
     }
 
     if (promises.length > 0) {
+      console.info('Draining requests to update secrets');
       await Promise.all(promises);
+    } else {
+      console.info('No secrets require upserting');
     }
 
     res = await sendSuccessMessage(event);
@@ -86,7 +86,7 @@ const upsertSecretBranch = async ({
 
   const secretsToUpdate = env.data.envs.filter(({ key }) => keyValuePairs[key]);
 
-  // If an env exists, do a put to updated it
+  // If an env exists, do a PATCH to updated it
   //
   // use reduce, as map requires a return for each, setting undefined
   const updateRequests = secretsToUpdate.reduce<
