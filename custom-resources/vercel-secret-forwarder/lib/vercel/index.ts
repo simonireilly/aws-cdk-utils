@@ -30,7 +30,6 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     switch (event.RequestType) {
       case 'Create':
-        console.info('Processing Create');
         promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
@@ -40,7 +39,6 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Update':
-        console.info('Processing Update');
         promises = await upsertSecretBranch({
           keyValuePairs: VercelEnvironmentVariables,
           authToken: VercelAuthToken,
@@ -50,7 +48,6 @@ export const handler: CloudFormationCustomResourceHandler = async (
         });
         break;
       case 'Delete':
-        console.info('Processing Delete');
         break;
     }
 
@@ -84,37 +81,46 @@ const upsertSecretBranch = async ({
   console.info('Fetching all secrets, not decrypting');
   const env = await getEnv({ projectId, authToken });
 
-  // We need to update existing secrets
   const secretsToUpdate = env.data.envs.filter(({ key }) => keyValuePairs[key]);
 
-  const secretsToCreate = Object.keys(keyValuePairs).map((key) => {});
-
   // If an env exists, do a put to updated it
-  const updateRequests = secretsToUpdate.map(({ key, id }) => {
-    const value = keyValuePairs[key];
-    return updateSecret({
-      authToken,
-      gitBranch,
-      key,
-      value,
-      projectId,
-      target,
-      id,
-    });
-  });
+  //
+  // use reduce, as map requires a return for each, setting undefined
+  const updateRequests = secretsToUpdate.reduce<
+    Array<ReturnType<typeof updateSecret>>
+  >((acc, { key, id }) => {
+    if (keyValuePairs[key]) {
+      const value = keyValuePairs[key];
+      delete keyValuePairs[key];
+      acc.push(
+        updateSecret({
+          authToken,
+          gitBranch,
+          key,
+          value,
+          projectId,
+          target,
+          id,
+        })
+      );
+    }
+
+    return acc;
+  }, []);
 
   // If the secret did not exist, then send a a POST request
-  const createRequests = secretsToCreate.map(({ key }) => {
-    const value = keyValuePairs[key];
-    return createSecret({
-      authToken,
-      gitBranch,
-      key,
-      value,
-      projectId,
-      target,
-    });
-  });
+  const createRequests = Object.entries(keyValuePairs).map<Promise<any>>(
+    ([key, value]) => {
+      return createSecret({
+        authToken,
+        gitBranch,
+        key,
+        value,
+        projectId,
+        target,
+      });
+    }
+  );
 
   return [...updateRequests, ...createRequests];
 };
