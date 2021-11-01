@@ -8,7 +8,7 @@
 ## Index
 
 - Vercel secret forwarder
-  - Send a collection of parameters form the stack, to a vercel deployment
+  - Send a collection of parameters form the stack, to a vercel deployment, supports  preview deploys
 
 
 ## Examples
