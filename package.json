@@ -13,6 +13,6 @@
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },
   "devDependencies": {
-    "husky": "^7.0.0"
+    "husky": "7.0.0"
   }
 }

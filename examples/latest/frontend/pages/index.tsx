@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>Get started by editing</p>
-        <pre>secret: {process.env.NEXT_PUBLIC_LOCAL_TEST}</pre>
+        <pre>secret: {process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID}</pre>
         <p>Test git changes</p>
       </main>
 

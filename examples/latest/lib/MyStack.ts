@@ -38,7 +38,7 @@ export default class MyStack extends sst.Stack {
 
     // Hook in to add a secret, to a dependency that is only known at deploy time
     vercel.addSecret(
-      'NEXT_PUBLIC_PREVIEW_URL',
+      'NEXT_PUBLIC_COGNITO_USER_POOL_ID',
       auth.cognitoUserPoolClient?.userPoolClientId as string
     );
   }
