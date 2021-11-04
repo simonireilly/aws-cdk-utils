@@ -24,11 +24,11 @@
     "@aws-cdk/aws-lambda-nodejs": "1.111.0"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "^1.111.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.111.0"
+    "@aws-cdk/core": "1.111.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.111.0"
   },
   "dependencies": {
     "axios": "0.21.1",
-    "@aws-cdk-utils/utils": "workspace:*"
+    "@aws-cdk-utils/utils": "workspace:*",
   }
 }

@@ -2,4 +2,4 @@
 to: packages/<%=name%>/README.md
 ---
 
-# AWS-CDK Utils - titleize( <%=name%> )
+# AWS-CDK Utils - <%= h.inflection.titleize(name) %>

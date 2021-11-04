@@ -34,6 +34,7 @@ importers:
 
   packages/custom-resources/utils:
     specifiers:
+      '@aws-cdk-utils/factories': workspace:*
       '@tsconfig/node14': 1.0.1
       '@types/jest': 26.0.10
       axios: 0.21.1
@@ -44,6 +45,7 @@ importers:
     dependencies:
       axios: 0.21.1
     devDependencies:
+      '@aws-cdk-utils/factories': link:../../factories
       '@tsconfig/node14': 1.0.1
       '@types/jest': 26.0.10
       jest: 26.4.2
@@ -74,6 +76,29 @@ importers:
       '@types/aws-lambda': 8.10.82
       '@types/jest': 26.0.10
       '@types/node': 10.17.27
+      jest: 26.4.2
+      ts-jest: 26.2.0_jest@26.4.2+typescript@4.4.4
+      typescript: 4.4.4
+
+  packages/factories:
+    specifiers:
+      '@tsconfig/node14': 1.0.1
+      '@types/aws-lambda': 8.10.85
+      '@types/faker': ^5.5.9
+      '@types/jest': 26.0.10
+      faker: ^5.5.3
+      fishery: 2.0.0
+      jest: 26.4.2
+      ts-jest: 26.2.0
+      typescript: 4.4.4
+    dependencies:
+      faker: 5.5.3
+      fishery: 2.0.0
+    devDependencies:
+      '@tsconfig/node14': 1.0.1
+      '@types/aws-lambda': 8.10.85
+      '@types/faker': 5.5.9
+      '@types/jest': 26.0.10
       jest: 26.4.2
       ts-jest: 26.2.0_jest@26.4.2+typescript@4.4.4
       typescript: 4.4.4
@@ -2517,6 +2542,10 @@ packages:
     dependencies:
       '@babel/types': 7.16.0
 
+  /@types/faker/5.5.9:
+    resolution: {integrity: sha512-uCx6mP3UY5SIO14XlspxsGjgaemrxpssJI0Ol+GfhxtcKpv9pgRZYsS4eeKeHVLje6Qtc8lGszuBI461+gVZBA==}
+    dev: true
+
   /@types/graceful-fs/4.1.5:
     resolution: {integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==}
     dependencies:
@@ -4165,6 +4194,10 @@ packages:
       snapdragon: 0.8.2
       to-regex: 3.0.2
 
+  /faker/5.5.3:
+    resolution: {integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==}
+    dev: false
+
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -4252,6 +4285,12 @@ packages:
     dependencies:
       locate-path: 5.0.0
       path-exists: 4.0.0
+
+  /fishery/2.0.0:
+    resolution: {integrity: sha512-cthWZUgcIgGEz1lVDpUZtV2UGmCk1yjiMl0sMHfAlcXZdUeuGB25QeOTujImn9kuySuItmp8zNoxf0gLAtGRqw==}
+    dependencies:
+      lodash.mergewith: 4.6.2
+    dev: false
 
   /flat-cache/3.0.4:
     resolution: {integrity: sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg==}
@@ -5703,6 +5742,10 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+    dev: false
+
+  /lodash.mergewith/4.6.2:
+    resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
     dev: false
 
   /lodash.set/4.3.2:

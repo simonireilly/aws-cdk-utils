@@ -4,7 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
     "test": "jest"
   },
   "engines": {
@@ -19,7 +24,8 @@
     "jest": "26.4.2",
     "nock": "^13.1.4",
     "ts-jest": "26.2.0",
-    "typescript": "4.4.4"
+    "typescript": "4.4.4",
+    "@aws-cdk-utils/factories": "workspace:*"
   },
   "dependencies": {
     "axios": "0.21.1"

@@ -1,4 +1,6 @@
 {
   "extends": "@tsconfig/node14",
-  "compilerOptions": { "outDir": "dist", "rootDir": "src", "composite": true }
+  "exclude": ["__test__", "dist"],
+  "compilerOptions": { "outDir": "dist", "rootDir": "src", "composite": true },
+  "references": [{ "path": "../../factories" }]
 }
