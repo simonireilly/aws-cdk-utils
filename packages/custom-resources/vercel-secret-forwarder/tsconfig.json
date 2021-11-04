@@ -18,7 +18,9 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "typeRoots": ["./node_modules/@types", "../../node_modules//@types"],
-    "composite": true
+    "composite": true,
+    "outDir": "dist"
   },
-  "exclude": ["node_modules", "cdk.out", "dist"]
+  "exclude": ["node_modules", "cdk.out", "dist"],
+  "references": [{ "path": "../utils" }]
 }

@@ -1,5 +1,5 @@
 import * as sst from '@serverless-stack/resources';
-import { VercelSecretSyncConstruct } from '@custom-resources/vercel-secret-forwarder';
+import { VercelSecretSyncConstruct } from '@aws-cdk-utils/vercel-secret-forwarder';
 import { OAuthScope } from '@aws-cdk/aws-cognito';
 
 export default class MyStack extends sst.Stack {
@@ -39,7 +39,7 @@ export default class MyStack extends sst.Stack {
     // Hook in to add a secret, to a dependency that is only known at deploy time
     vercel.addSecret(
       'NEXT_PUBLIC_COGNITO_USER_POOL_ID',
-      auth.cognitoUserPoolClient?.userPoolClientId as string
+      auth.cognitoUserPool?.userPoolId as string
     );
   }
 }

@@ -1,18 +1,20 @@
 {
-  "name": "custom-resources",
+  "name": "aws-cdk-utils",
   "version": "0.1.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "custom-resources/*",
-      "examples/*"
-    ]
+  "engines": {
+    "node": ">=14 <15"
   },
   "scripts": {
     "prepare": "husky install",
+    "test": "pnpm test --filter '*'",
+    "new:package": "hygen workspace-package new",
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },
   "devDependencies": {
     "husky": "7.0.0"
+  },
+  "dependencies": {
+    "hygen": "6.1.0"
   }
 }

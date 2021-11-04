@@ -2,7 +2,7 @@ on:
   pull_request:
     branches: [main]
 
-name: Deploy to Amazon with CDK
+name: Lint, Build, Test
 
 jobs:
   deploy:
@@ -14,25 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
       - name: Setup yarn cache
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-          cache: 'yarn'
+          node-version: "14"
+          cache: "yarn"
 
       - run: yarn install
-      - run: yarn --cwd examples/latest/ tsc --build
-      - run: yarn --cwd examples/latest deploy
-        env:
-          GIT_BRANCH: ${{ github.event.pull_request.head.ref }}
-          VERCEL_AUTH_TOKEN: ${{ secrets.VERCEL_AUTH_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
-          VERCEL_ORGANISATION_NAME: ${{ secrets.VERCEL_ORGANISATION_NAME }}

@@ -31,20 +31,40 @@ export interface UploadSecretProps {
   authToken: string;
 }
 
+const vercelApiClientBuilder = (authToken: string) => {
+  console.info('Building vercel API client');
+
+  const client = axios.create({
+    baseURL: BASE_URL,
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
+  client.interceptors.request.use((config) => {
+    console.debug('Sending request to Vercel', { url: config.url });
+    return config;
+  });
+
+  client.interceptors.response.use((config) => {
+    console.debug('Received response from Vercel', {
+      data: config.data,
+      status: config.status,
+    });
+    return config;
+  });
+
+  return client;
+};
+
 export const getEnv = ({
   projectId,
   authToken,
 }: Pick<UploadSecretProps, 'projectId' | 'authToken'>) => {
+  const client = vercelApiClientBuilder(authToken);
   console.info('Fetching existing project env');
-  return axios.get<VercelApi.GetResponse>(
-    `${BASE_URL}/v8/projects/${projectId}/env`,
-    {
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
-      },
-    }
-  );
+  return client.get<VercelApi.GetResponse>('/v8/projects/${projectId}/env');
 };
 
 export const createSecret = async ({

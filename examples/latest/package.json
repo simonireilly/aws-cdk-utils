@@ -18,7 +18,7 @@
   "dependencies": {
     "@aws-cdk/aws-cognito": "1.111.0",
     "@aws-cdk/core": "1.111.0",
-    "@custom-resources/vercel-secret-forwarder": "0.1.0",
+    "@aws-cdk-utils/vercel-secret-forwarder": "0.1.0",
     "@serverless-stack/cli": "0.37.2",
     "@serverless-stack/resources": "0.37.2"
   }
