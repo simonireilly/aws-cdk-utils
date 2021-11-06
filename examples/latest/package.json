@@ -1,6 +1,6 @@
 {
   "name": "@examples/latest",
-  "version": "0.0.1-alpha.59.2",
+  "version": "0.0.1-alpha.60",
   "dependencies": {
     "@aws-cdk/aws-cognito": "1.126.0",
     "@aws-cdk/core": "1.126.0",
