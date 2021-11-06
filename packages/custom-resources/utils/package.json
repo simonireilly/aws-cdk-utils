@@ -25,6 +25,7 @@
   "license": "ISC",
   "main": "dist/index.js",
   "scripts": {
+    "prepare": "yarn build",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "test": "jest"
