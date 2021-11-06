@@ -64,7 +64,7 @@ export const getEnv = ({
 }: Pick<UploadSecretProps, 'projectId' | 'authToken'>) => {
   const client = vercelApiClientBuilder(authToken);
   console.info('Fetching existing project env');
-  return client.get<VercelApi.GetResponse>('/v8/projects/${projectId}/env');
+  return client.get<VercelApi.GetResponse>(`/v8/projects/${projectId}/env`);
 };
 
 export const createSecret = async ({
