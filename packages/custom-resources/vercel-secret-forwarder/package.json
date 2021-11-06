@@ -28,9 +28,9 @@
     "@aws-cdk/core": ">=1.111.0"
   },
   "scripts": {
-    "prepare": "yarn build",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
+    "prepare": "yarn build",
     "test": "jest",
     "watch": "tsc -w"
   },
