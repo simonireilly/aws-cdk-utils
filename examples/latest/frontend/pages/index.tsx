@@ -13,33 +13,30 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Secrets were imported using{' '}
+          Vercel Secret Sync by{' '}
           <a href="https://github.com/simonireilly/aws-cdk-utils">cdk-Utils</a>
         </h1>
 
         <p className={styles.description}>
-          Secrets were sent securely, from your AWS to vercel, with now steps in
-          between. Also, when you delete the cloudformation stack, the preview
-          secrets will be cleaned up for you 👍
+          Secrets were sent securely, from your AWS Account to vercel, with now
+          steps in between.
         </p>
 
-        <p className={styles.description}>
-          Public secrets for this preview URL:
-        </p>
         <pre>secret: {process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID}</pre>
         <pre>timestamp: {process.env.NEXT_PUBLIC_UPDATED_TIMESTAMP_TEST}</pre>
+        <p className={styles.description}>
+          Also, when you delete the cloudformation stack, the preview secrets
+          will be cleaned up for you 👍
+        </p>
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/simonireilly/aws-cdk-utils"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          Powered by Simon
         </a>
       </footer>
     </div>
