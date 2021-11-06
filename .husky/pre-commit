@@ -4,5 +4,7 @@
 # yarn test
 yarn embed
 yarn syncpack format
+# Allow peer dependencies to be unique
 yarn syncpack fix-mismatches --prod --dev
+# Allow peer dependencies to be unique
 yarn syncpack set-semver-ranges --prod --dev
