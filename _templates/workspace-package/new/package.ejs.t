@@ -3,7 +3,7 @@ to: packages/<%=name%>/package.json
 ---
 
 {
-  "name": "@aws-cdk-utils/<%=name%>",
+  "name": "@cdk-utils/<%=name%>",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",

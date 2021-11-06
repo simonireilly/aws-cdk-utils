@@ -1,5 +1,5 @@
 import * as sst from '@serverless-stack/resources';
-import { VercelSecretSyncConstruct } from '@aws-cdk-utils/vercel-secret-forwarder';
+import { VercelSecretSyncConstruct } from '@cdk-utils/vercel-secret-forwarder';
 import { OAuthScope } from '@aws-cdk/aws-cognito';
 
 export default class MyStack extends sst.Stack {

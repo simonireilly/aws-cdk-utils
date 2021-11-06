@@ -1,6 +1,6 @@
 import { sendFailureMessage } from '../../src';
 import nock from 'nock';
-import { awsFactory } from '@aws-cdk-utils/factories';
+import { awsFactory } from '@cdk-utils/factories';
 
 describe('aws', () => {
   describe('cloudformation', () => {

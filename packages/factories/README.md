@@ -11,7 +11,7 @@ Factories uses [fishery](https://github.com/thoughtbot/fishery) to create stock 
 ### With Jest
 
 ```ts
-import { awsFactory } from '@aws-cdk-utils/factories';
+import { awsFactory } from '@cdk-utils/factories';
 import { handler } from 'src/lambda.ts';
 
 test("lambda", () => {

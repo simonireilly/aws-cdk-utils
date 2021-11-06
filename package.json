@@ -1,5 +1,6 @@
 {
-  "name": "aws-cdk-utils",
+  "name": "cdk-utils",
+  "description": "Collection of constructs and utilities for extending aws-cdk common use cases",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -7,8 +8,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "pnpm test --filter '*'",
-    "build": "pnpm build --filter '*'",
+    "test": "pnpm test --filter '@cdk-utils/*'",
+    "build": "pnpm build --filter '@cdk-utils/*'",
     "new:package": "hygen workspace-package new",
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },

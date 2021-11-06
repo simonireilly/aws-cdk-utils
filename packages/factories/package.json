@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cdk-utils/factories",
+  "name": "@cdk-utils/factories",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",

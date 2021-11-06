@@ -1,7 +1,7 @@
 import { CloudFormationCustomResourceHandler } from 'aws-lambda';
 import { getEnv, updateSecret, createSecret, UploadSecretProps } from './api';
 import type { VercelSecretSyncConstructProps } from '..';
-import { sendFailureMessage, sendSuccessMessage } from '@aws-cdk-utils/utils';
+import { sendFailureMessage, sendSuccessMessage } from '@cdk-utils/utils';
 import axios from 'axios';
 
 export const handler: CloudFormationCustomResourceHandler = async (
