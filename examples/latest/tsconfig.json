@@ -21,7 +21,7 @@
   },
   "references": [
     {
-      "path": "../../custom-resources/vercel-secret-forwarder"
+      "path": "../../packages/custom-resources/vercel-secret-forwarder"
     }
   ],
   "include": ["lib", "src"]

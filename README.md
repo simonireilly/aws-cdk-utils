@@ -1,31 +1,24 @@
-# AWS CDK Utils
+# CDK Utils
 
-- [AWS CDK Utils](#aws-cdk-utils)
+- [CDK Utils](#cdk-utils)
   - [Index](#index)
-  - [Examples](#examples)
-  - [Build Style](#build-style)
+  - [Contributing](#contributing)
 
 ## Index
 
-- Vercel secret forwarder
-  - Send a collection of parameters form the stack, to a vercel deployment
+- Vercel secret forwarder: Send a aws data to a vercel deployment, supports  preview deploys
+- Factories: Common factories for AWS data types; so testing can commence, pronto!
 
+## Contributing
 
-## Examples
+Running tests:
 
-Demonstrations of how to use the custom-resource sor utils.
-
-## Build Style
-
-Use yarn workspaces with folders:
-
-```bash
-.
-├── custom-resources    # For custom resources
-├── examples            # For demonstration against sst or aws-cdk
-├── package.json
-├── README.md
-└── yarn.lock
+```
+yarn test
 ```
 
-The packages in custom-resources are `tsconfig.json` as composite: true, and will rebuild with latest.
+Creating a new package:
+
+```
+yarn new:package <workspace-name>
+```

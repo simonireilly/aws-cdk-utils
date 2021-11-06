@@ -1,5 +1,6 @@
 import * as sst from '@serverless-stack/resources';
-import { VercelSecretSyncConstruct } from '@custom-resources/vercel-secret-forwarder';
+import { performance } from 'perf_hooks';
+import { VercelSecretSyncConstruct } from '@cdk-utils/vercel-secret-forwarder';
 import { OAuthScope } from '@aws-cdk/aws-cognito';
 
 export default class MyStack extends sst.Stack {
@@ -12,6 +13,7 @@ export default class MyStack extends sst.Stack {
       VercelEnvironmentVariables: {
         NEXT_PUBLIC_LOCAL_TEST: 'Preview domain',
         PRIVATE_TEST: 'This is a test one',
+        NEXT_PUBLIC_UPDATED_TIMESTAMP_TEST: String(performance.now()),
       },
       VercelProjectId: String(process.env.VERCEL_PROJECT_ID),
       VercelProjectName: String(process.env.VERCEL_PROJECT_NAME),
@@ -38,8 +40,13 @@ export default class MyStack extends sst.Stack {
 
     // Hook in to add a secret, to a dependency that is only known at deploy time
     vercel.addSecret(
-      'NEXT_PUBLIC_PREVIEW_URL',
-      auth.cognitoUserPoolClient?.userPoolClientId as string
+      'NEXT_PUBLIC_COGNITO_USER_POOL_ID',
+      auth.cognitoUserPool?.userPoolId as string
     );
+
+    this.addOutputs({
+      NEXT_PUBLIC_COGNITO_USER_POOL_ID: auth.cognitoUserPool
+        ?.userPoolId as string,
+    });
   }
 }

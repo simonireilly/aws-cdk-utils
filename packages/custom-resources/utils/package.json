@@ -1,0 +1,33 @@
+{
+  "name": "@cdk-utils/utils",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=14 <15"
+  },
+  "keywords": [],
+  "author": "Simon",
+  "license": "ISC",
+  "devDependencies": {
+    "@cdk-utils/factories": "0.1.0",
+    "@tsconfig/node14": "1.0.1",
+    "@types/jest": "26.0.10",
+    "jest": "26.4.2",
+    "nock": "^13.1.4",
+    "ts-jest": "26.2.0",
+    "typescript": "4.4.4"
+  },
+  "dependencies": {
+    "axios": "0.21.1"
+  }
+}

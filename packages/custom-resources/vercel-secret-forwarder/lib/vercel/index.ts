@@ -1,8 +1,8 @@
 import { CloudFormationCustomResourceHandler } from 'aws-lambda';
 import { getEnv, updateSecret, createSecret, UploadSecretProps } from './api';
 import type { VercelSecretSyncConstructProps } from '..';
-import { sendFailureMessage, sendSuccessMessage } from './cloudformation';
-import { AxiosError } from 'axios';
+import { sendFailureMessage, sendSuccessMessage } from '@cdk-utils/utils';
+import axios from 'axios';
 
 export const handler: CloudFormationCustomResourceHandler = async (
   event,
@@ -13,7 +13,8 @@ export const handler: CloudFormationCustomResourceHandler = async (
   try {
     console.info('Unpacking event resources');
 
-    const expectedResources = (event.ResourceProperties as unknown) as VercelSecretSyncConstructProps;
+    const expectedResources =
+      event.ResourceProperties as unknown as VercelSecretSyncConstructProps;
 
     const {
       GitBranch,
@@ -24,6 +25,8 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     console.info('Preparing to send secrets', {
       GitBranch,
+      VercelProjectId,
+      VercelEnvironmentVariables,
     });
 
     const upsertAction = async () =>
@@ -60,9 +63,14 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     res = await sendSuccessMessage(event);
   } catch (e) {
-    if (e.response) {
-      const error = e as AxiosError;
-      console.error('Axios API error', { response: error.response?.data });
+    if (axios.isAxiosError(e) && e.response) {
+      console.error('Axios API error', { response: e.response?.data });
+    } else {
+      // We won't give stack trace, since it may include a secret value
+      console.error('Unhandled error', {
+        message: (e as Error).message,
+        name: (e as Error).name,
+      });
     }
     res = await sendFailureMessage(event);
   }
