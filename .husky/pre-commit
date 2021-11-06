@@ -4,5 +4,5 @@
 # yarn test
 yarn embed
 yarn syncpack format
-yarn syncpack fix-mismatches
+yarn syncpack fix-mismatches --prod --dev
 yarn syncpack set-semver-ranges --prod --dev
