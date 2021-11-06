@@ -5,7 +5,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/**/*"
+      "packages/**/*",
+      "examples/*"
     ]
   },
   "engines": {
@@ -13,8 +14,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "yarn workspaces foreach run test",
-    "build": "yarn workspaces foreach run build -v",
+    "test": "lerna run test",
+    "build": "lerna run build -- -v",
     "new:package": "hygen workspace-package new",
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },

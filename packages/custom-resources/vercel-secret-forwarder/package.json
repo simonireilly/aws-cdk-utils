@@ -1,7 +1,7 @@
 {
   "name": "@cdk-utils/vercel-secret-forwarder",
   "version": "0.1.0",
-  "main": "dist/lib/index.js",
+  "main": "lib/index.ts",
   "types": "dist/lib/index.d.ts",
   "scripts": {
     "build": "tsc --build",
@@ -28,7 +28,7 @@
     "@aws-cdk/core": "1.126.0"
   },
   "dependencies": {
-    "@cdk-utils/utils": "workspace:*",
+    "@cdk-utils/utils": "0.1.0",
     "axios": "0.21.1"
   }
 }
