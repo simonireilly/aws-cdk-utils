@@ -43,5 +43,10 @@ export default class MyStack extends sst.Stack {
       'NEXT_PUBLIC_COGNITO_USER_POOL_ID',
       auth.cognitoUserPool?.userPoolId as string
     );
+
+    this.addOutputs({
+      NEXT_PUBLIC_COGNITO_USER_POOL_ID: auth.cognitoUserPool
+        ?.userPoolId as string,
+    });
   }
 }
