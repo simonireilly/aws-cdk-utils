@@ -1,8 +1,11 @@
 {
   "name": "@cdk-utils/vercel-secret-forwarder",
   "version": "0.1.0",
-  "main": "lib/index.ts",
-  "types": "dist/lib/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/vercel/index.ts"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

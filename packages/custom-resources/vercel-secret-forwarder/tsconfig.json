@@ -17,8 +17,7 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "composite": true,
-    "outDir": "dist"
+    "composite": true
   },
   "exclude": ["node_modules", "cdk.out", "dist", "__test__"],
   "references": [{ "path": "../utils" }]
