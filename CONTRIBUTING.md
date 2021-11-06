@@ -2,6 +2,11 @@
 
 **All contributions welcome**
 
+- [Contributing](#contributing)
+  - [Pull requests](#pull-requests)
+  - [Development](#development)
+  - [Publishing](#publishing)
+
 ### Pull requests
 
 As a general rule please keep changes small.

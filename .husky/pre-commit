@@ -2,6 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # yarn test
+yarn embed
 yarn syncpack format
 yarn syncpack fix-mismatches
 yarn syncpack set-semver-ranges
