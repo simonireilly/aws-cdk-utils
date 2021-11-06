@@ -107,3 +107,15 @@ export const updateSecret = async ({
     gitBranch,
   });
 };
+
+export const deleteSecret = async ({
+  projectId,
+  id,
+  authToken,
+}: Pick<UploadSecretProps, 'authToken' | 'projectId'> &
+  Pick<VercelApi.Env, 'id'>) => {
+  console.info(`Deleting env variable`, { id });
+  const client = vercelApiClientBuilder(authToken);
+
+  return client.delete(`${BASE_URL}/v8/projects/${projectId}/env/${id}`);
+};

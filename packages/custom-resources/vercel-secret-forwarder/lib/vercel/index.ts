@@ -1,5 +1,11 @@
 import { CloudFormationCustomResourceHandler } from 'aws-lambda';
-import { getEnv, updateSecret, createSecret, UploadSecretProps } from './api';
+import {
+  getEnv,
+  updateSecret,
+  createSecret,
+  UploadSecretProps,
+  deleteSecret,
+} from './api';
 import type { VercelSecretSyncConstructProps } from '..';
 import { sendFailureMessage, sendSuccessMessage } from '@cdk-utils/utils';
 import axios from 'axios';
@@ -38,6 +44,15 @@ export const handler: CloudFormationCustomResourceHandler = async (
         target: ['preview'],
       });
 
+    const deleteAction = async () =>
+      deleteSecretBranch({
+        keyValuePairs: VercelEnvironmentVariables,
+        authToken: VercelAuthToken,
+        gitBranch: GitBranch,
+        projectId: VercelProjectId,
+        target: ['preview'],
+      });
+
     let promises: Array<Promise<any>> = [];
 
     switch (event.RequestType) {
@@ -51,6 +66,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
         break;
       case 'Delete':
         console.info('Performing delete action');
+        promises = await deleteAction();
         break;
     }
 
@@ -92,10 +108,13 @@ const upsertSecretBranch = async ({
   console.info('Fetching all secrets, not decrypting');
   const env = await getEnv({ projectId, authToken });
 
-  const secretsToUpdate = env.data.envs.filter(({ key }) => keyValuePairs[key]);
+  // If a secret exists, and it has a value on this specific branch
+  const secretsToUpdate = env.data.envs.filter(
+    ({ key, gitBranch: vercelSecretGitBranch }) =>
+      keyValuePairs[key] && vercelSecretGitBranch === gitBranch
+  );
 
   // If an env exists, do a PATCH to updated it
-  //
   // use reduce, as map requires a return for each, setting undefined
   const updateRequests = secretsToUpdate.reduce<
     Array<ReturnType<typeof updateSecret>>
@@ -134,4 +153,34 @@ const upsertSecretBranch = async ({
   );
 
   return [...updateRequests, ...createRequests];
+};
+
+const deleteSecretBranch = async ({
+  keyValuePairs,
+  authToken,
+  gitBranch,
+  projectId,
+}: Omit<UploadSecretProps, 'key' | 'value'> & {
+  keyValuePairs: VercelSecretSyncConstructProps['VercelEnvironmentVariables'];
+}): Promise<Array<ReturnType<typeof deleteSecret>>> => {
+  console.info('Fetching all secrets, not decrypting');
+  const env = await getEnv({ projectId, authToken });
+
+  // If a secret exists, and it has a value on this specific branch
+  const secretsToDelete = env.data.envs.filter(
+    ({ key, gitBranch: vercelSecretGitBranch }) =>
+      keyValuePairs[key] && vercelSecretGitBranch === gitBranch
+  );
+
+  const deleteRequests = Object.entries(secretsToDelete).map<Promise<any>>(
+    ([key, value]) => {
+      return deleteSecret({
+        authToken,
+        projectId: projectId,
+        id: value.id,
+      });
+    }
+  );
+
+  return deleteRequests;
 };
