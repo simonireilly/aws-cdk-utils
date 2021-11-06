@@ -25,6 +25,7 @@ export const handler: CloudFormationCustomResourceHandler = async (
 
     console.info('Preparing to send secrets', {
       GitBranch,
+      VercelProjectId,
     });
 
     const upsertAction = async () =>
@@ -74,6 +75,8 @@ export const handler: CloudFormationCustomResourceHandler = async (
   }
 
   console.info('Completed sending secret with config');
+
+  res = await sendSuccessMessage(event);
 };
 
 const upsertSecretBranch = async ({
