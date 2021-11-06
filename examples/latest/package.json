@@ -1,10 +1,10 @@
 {
   "name": "@examples/latest",
-  "version": "0.0.1-alpha.59.1",
+  "version": "0.0.1-alpha.59.2",
   "dependencies": {
     "@aws-cdk/aws-cognito": "1.126.0",
     "@aws-cdk/core": "1.126.0",
-    "@cdk-utils/vercel-secret-forwarder": "0.0.1-alpha.59.1",
+    "@cdk-utils/vercel-secret-forwarder": "^0.0.1-alpha.59.2",
     "@serverless-stack/cli": "0.50.2",
     "@serverless-stack/resources": "0.50.2"
   },
