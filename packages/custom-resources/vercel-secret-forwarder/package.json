@@ -2,7 +2,7 @@
   "name": "@cdk-utils/vercel-secret-forwarder",
   "version": "0.0.1-alpha.61",
   "dependencies": {
-    "@cdk-utils/utils": "^0.0.1-alpha.61",
+    "@cdk-utils/utils": "0.0.1-alpha.61",
     "axios": "0.21.1"
   },
   "devDependencies": {
