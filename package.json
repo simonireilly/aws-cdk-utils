@@ -2,28 +2,29 @@
   "name": "cdk-utils",
   "description": "Collection of constructs and utilities for extending aws-cdk common use cases",
   "version": "0.1.0",
+  "dependencies": {
+    "hygen": "6.1.0",
+    "lerna": "4.0.0",
+    "syncpack": "5.8.15"
+  },
+  "devDependencies": {
+    "husky": "7.0.0"
+  },
+  "engines": {
+    "node": ">=14 <15"
+  },
   "private": true,
+  "scripts": {
+    "build": "lerna run build -- -v",
+    "new:package": "hygen workspace-package new",
+    "prepare": "husky install",
+    "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram",
+    "test": "lerna run test"
+  },
   "workspaces": {
     "packages": [
       "packages/**/*",
       "examples/*"
     ]
-  },
-  "engines": {
-    "node": ">=14 <15"
-  },
-  "scripts": {
-    "prepare": "husky install",
-    "test": "lerna run test",
-    "build": "lerna run build -- -v",
-    "new:package": "hygen workspace-package new",
-    "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
-  },
-  "devDependencies": {
-    "husky": "7.0.0"
-  },
-  "dependencies": {
-    "hygen": "6.1.0",
-    "lerna": "^4.0.0"
   }
 }
