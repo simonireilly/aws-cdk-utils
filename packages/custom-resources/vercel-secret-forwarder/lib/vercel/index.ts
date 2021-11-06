@@ -50,7 +50,6 @@ export const handler: CloudFormationCustomResourceHandler = async (
         authToken: VercelAuthToken,
         gitBranch: GitBranch,
         projectId: VercelProjectId,
-        target: ['preview'],
       });
 
     let promises: Array<Promise<any>> = [];
@@ -160,7 +159,7 @@ const deleteSecretBranch = async ({
   authToken,
   gitBranch,
   projectId,
-}: Omit<UploadSecretProps, 'key' | 'value'> & {
+}: Omit<UploadSecretProps, 'key' | 'value' | 'target'> & {
   keyValuePairs: VercelSecretSyncConstructProps['VercelEnvironmentVariables'];
 }): Promise<Array<ReturnType<typeof deleteSecret>>> => {
   console.info('Fetching all secrets, not decrypting');
