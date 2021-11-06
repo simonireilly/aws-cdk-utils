@@ -1,6 +1,9 @@
 *.ts
 !*.d.ts
+!lib/vercel/*.ts
+*.tsbuidinfo
 
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+__test__

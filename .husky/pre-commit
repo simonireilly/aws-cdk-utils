@@ -2,6 +2,9 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # yarn test
+yarn embed
 yarn syncpack format
-yarn syncpack fix-mismatches
-yarn syncpack set-semver-ranges
+# Allow peer dependencies to be unique
+yarn syncpack fix-mismatches --prod --dev
+# Allow peer dependencies to be unique
+yarn syncpack set-semver-ranges --prod --dev

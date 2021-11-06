@@ -8,6 +8,7 @@
     "syncpack": "5.8.15"
   },
   "devDependencies": {
+    "embedme": "1.22.0",
     "husky": "7.0.0"
   },
   "engines": {
@@ -16,6 +17,7 @@
   "private": true,
   "scripts": {
     "build": "lerna run build -- -v",
+    "embed": "embedme './packages/**/README.md'",
     "new:package": "hygen workspace-package new",
     "prepare": "husky install",
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram",
