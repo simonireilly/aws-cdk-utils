@@ -29,6 +29,6 @@
   },
   "dependencies": {
     "axios": "0.21.1",
-    "@aws-cdk-utils/utils": "workspace:*",
+    "@aws-cdk-utils/utils": "workspace:*"
   }
 }
