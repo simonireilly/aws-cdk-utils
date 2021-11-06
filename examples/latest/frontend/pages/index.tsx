@@ -13,7 +13,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Woopee! the below secrets were imported using{' '}
+          <a href="https://github.com/simonireilly/aws-cdk-utils">CDK-Utils</a>
         </h1>
 
         <p className={styles.description}>Get started by editing</p>
