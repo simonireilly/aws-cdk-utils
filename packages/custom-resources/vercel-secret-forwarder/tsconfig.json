@@ -17,7 +17,6 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "typeRoots": ["./node_modules/@types", "../../node_modules//@types"],
     "composite": true,
     "outDir": "dist"
   },

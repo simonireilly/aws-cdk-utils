@@ -14,21 +14,21 @@
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.126.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.126.0",
+    "@aws-cdk/core": "1.126.0",
     "@types/aws-lambda": "8.10.82",
     "@types/jest": "26.0.10",
     "@types/node": "10.17.27",
     "jest": "26.4.2",
     "ts-jest": "26.2.0",
-    "typescript": "4.4.4",
-    "@aws-cdk/core": "1.126.0",
-    "@aws-cdk/aws-lambda-nodejs": "1.126.0"
+    "typescript": "4.4.4"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "1.126.0",
-    "@aws-cdk/aws-lambda-nodejs": "1.126.0"
+    "@aws-cdk/aws-lambda-nodejs": "1.126.0",
+    "@aws-cdk/core": "1.126.0"
   },
   "dependencies": {
-    "axios": "0.21.1",
-    "@cdk-utils/utils": "workspace:*"
+    "@cdk-utils/utils": "workspace:*",
+    "axios": "0.21.1"
   }
 }

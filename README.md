@@ -14,11 +14,11 @@
 Running tests:
 
 ```
-pnpm test
+yarn test
 ```
 
 Creating a new package:
 
 ```
-pnpm new:package <workspace-name>
+yarn new:package <workspace-name>
 ```

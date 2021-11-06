@@ -19,13 +19,13 @@
   "author": "Simon",
   "license": "ISC",
   "devDependencies": {
+    "@cdk-utils/factories": "workspace:*",
     "@tsconfig/node14": "1.0.1",
     "@types/jest": "26.0.10",
     "jest": "26.4.2",
     "nock": "^13.1.4",
     "ts-jest": "26.2.0",
-    "typescript": "4.4.4",
-    "@cdk-utils/factories": "workspace:*"
+    "typescript": "4.4.4"
   },
   "dependencies": {
     "axios": "0.21.1"

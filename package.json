@@ -3,13 +3,18 @@
   "description": "Collection of constructs and utilities for extending aws-cdk common use cases",
   "version": "0.1.0",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/**/*"
+    ]
+  },
   "engines": {
     "node": ">=14 <15"
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "pnpm test --filter '@cdk-utils/*'",
-    "build": "pnpm build --filter '@cdk-utils/*'",
+    "test": "yarn workspaces foreach run test",
+    "build": "yarn workspaces foreach run build -v",
     "new:package": "hygen workspace-package new",
     "rebuild-latest": "yarn --cwd examples/latest && yarn --cwd examples/latest diagram"
   },
@@ -17,6 +22,7 @@
     "husky": "7.0.0"
   },
   "dependencies": {
-    "hygen": "6.1.0"
+    "hygen": "6.1.0",
+    "lerna": "^4.0.0"
   }
 }
