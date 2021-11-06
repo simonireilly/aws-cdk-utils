@@ -1,4 +1,5 @@
 import * as sst from '@serverless-stack/resources';
+import { performance } from 'perf_hooks';
 import { VercelSecretSyncConstruct } from '@cdk-utils/vercel-secret-forwarder';
 import { OAuthScope } from '@aws-cdk/aws-cognito';
 
@@ -12,6 +13,7 @@ export default class MyStack extends sst.Stack {
       VercelEnvironmentVariables: {
         NEXT_PUBLIC_LOCAL_TEST: 'Preview domain',
         PRIVATE_TEST: 'This is a test one',
+        NEXT_PUBLIC_UPDATED_TIMESTAMP_TEST: String(performance.now()),
       },
       VercelProjectId: String(process.env.VERCEL_PROJECT_ID),
       VercelProjectName: String(process.env.VERCEL_PROJECT_NAME),
