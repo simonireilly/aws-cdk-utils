@@ -76,23 +76,15 @@ export const createSecret = async ({
   authToken,
 }: UploadSecretProps) => {
   console.info(`Creating secret ${key} to branch ${gitBranch}`);
+  const client = vercelApiClientBuilder(authToken);
 
-  return axios.post(
-    `${BASE_URL}/v8/projects/${projectId}/env`,
-    {
-      type: 'encrypted',
-      key,
-      value,
-      target,
-      gitBranch,
-    },
-    {
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
-      },
-    }
-  );
+  return client.post(`${BASE_URL}/v8/projects/${projectId}/env`, {
+    type: 'encrypted',
+    key,
+    value,
+    target,
+    gitBranch,
+  });
 };
 
 export const updateSecret = async ({
@@ -105,21 +97,13 @@ export const updateSecret = async ({
   id,
 }: UploadSecretProps & Pick<VercelApi.Env, 'id'>) => {
   console.info(`Updating secret ${key} to branch ${gitBranch}`);
+  const client = vercelApiClientBuilder(authToken);
 
-  return axios.patch(
-    `${BASE_URL}/v8/projects/${projectId}/env/${id}`,
-    {
-      type: 'encrypted',
-      key,
-      value,
-      target,
-      gitBranch,
-    },
-    {
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
-      },
-    }
-  );
+  return client.patch(`${BASE_URL}/v8/projects/${projectId}/env/${id}`, {
+    type: 'encrypted',
+    key,
+    value,
+    target,
+    gitBranch,
+  });
 };
