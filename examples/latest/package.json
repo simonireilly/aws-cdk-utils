@@ -10,11 +10,6 @@
     "remove": "sst remove",
     "diagram": "cdk-dia --tree .build/cdk.out/tree.json"
   },
-  "eslintConfig": {
-    "extends": [
-      "serverless-stack"
-    ]
-  },
   "devDependencies": {
     "@aws-cdk/assert": "1.126.0",
     "@types/aws-lambda": "^8.10.70",

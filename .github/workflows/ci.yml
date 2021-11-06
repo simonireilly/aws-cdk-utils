@@ -5,8 +5,8 @@ on:
 name: Lint, Build, Test
 
 jobs:
-  deploy:
-    name: Deploy
+  ci:
+    name: Continuous Integration
     runs-on: ubuntu-latest
     environment: preview
 
