@@ -2,6 +2,12 @@
   "name": "cdk-utils",
   "description": "Collection of constructs and utilities for extending aws-cdk common use cases",
   "version": "0.1.0",
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
+  "bugs": "https://github.com/simonireilly/aws-cdk-utils/issues",
   "dependencies": {
     "hygen": "6.1.0",
     "lerna": "4.0.0",
@@ -14,7 +20,13 @@
   "engines": {
     "node": ">=14 <15"
   },
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "keywords": [
+    "aws-cdk"
+  ],
+  "license": "MIT",
   "private": true,
+  "repository": "https://github.com/simonireilly/aws-cdk-utils.git",
   "scripts": {
     "build": "lerna run build -- -v",
     "embed": "embedme './packages/**/README.md'",

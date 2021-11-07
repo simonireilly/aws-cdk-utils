@@ -1,13 +1,17 @@
 {
   "name": "@cdk-utils/utils",
   "description": "",
-  "version": "0.0.1-alpha.59.0",
-  "author": "Simon",
+  "version": "0.0.1-alpha.62",
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
   "dependencies": {
     "axios": "0.21.1"
   },
   "devDependencies": {
-    "@cdk-utils/factories": "^0.0.1-alpha.59.0",
+    "@cdk-utils/factories": "^0.0.1-alpha.62",
     "@tsconfig/node14": "1.0.1",
     "@types/jest": "26.0.10",
     "jest": "26.4.2",
@@ -21,12 +25,17 @@
   "files": [
     "dist/"
   ],
-  "keywords": [],
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "keywords": [
+    "aws-cdk"
+  ],
   "license": "ISC",
   "main": "dist/index.js",
+  "repository": "https://github.com/simonireilly/aws-cdk-utils.git",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
+    "prepare": "yarn build",
     "test": "jest"
   },
   "types": "dist/index.d.ts"

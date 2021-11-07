@@ -11,6 +11,18 @@ to: packages/<%=name%>/package.json
   "files": [
     "dist/"
   ],
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
+  "bugs": "https://github.com/simonireilly/aws-cdk-utils/issues",
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonireilly/aws-cdk-utils.git",
+    "directory": "packages/<%=name%>"
+  }
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

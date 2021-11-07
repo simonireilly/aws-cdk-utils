@@ -1,8 +1,12 @@
 {
   "name": "@cdk-utils/factories",
   "description": "",
-  "version": "0.0.1-alpha.59.0",
-  "author": "Simon",
+  "version": "0.0.1-alpha.62",
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
   "dependencies": {
     "faker": "5.5.3",
     "fishery": "2.0.0"
@@ -19,12 +23,17 @@
   "engines": {
     "node": ">=14 <15"
   },
-  "keywords": [],
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "keywords": [
+    "aws-cdk"
+  ],
   "license": "ISC",
   "main": "dist/index.js",
+  "repository": "https://github.com/simonireilly/aws-cdk-utils.git",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
+    "prepare": "yarn build",
     "test": "jest"
   },
   "types": "dist/index.d.ts"
