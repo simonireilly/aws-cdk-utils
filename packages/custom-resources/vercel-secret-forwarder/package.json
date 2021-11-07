@@ -25,7 +25,7 @@
     "node": ">=14 <15"
   },
   "files": [
-    "lib/vercel/index.ts"
+    "lib/vercel/*.ts"
   ],
   "homepage": "https://github.com/simonireilly/aws-cdk-utils",
   "keywords": [
