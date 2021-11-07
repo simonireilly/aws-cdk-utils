@@ -2,11 +2,20 @@
   "name": "@cdk-utils/factories",
   "description": "",
   "version": "0.0.1-alpha.61",
-  "author": "Simon",
   "dependencies": {
     "faker": "5.5.3",
     "fishery": "2.0.0"
   },
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "keywords": [
+    "aws-cdk"
+  ],
+  "repository": "https://github.com/simonireilly/aws-cdk-utils.git",
   "devDependencies": {
     "@tsconfig/node14": "1.0.1",
     "@types/aws-lambda": "8.10.82",
@@ -19,7 +28,6 @@
   "engines": {
     "node": ">=14 <15"
   },
-  "keywords": [],
   "license": "ISC",
   "main": "dist/index.js",
   "scripts": {

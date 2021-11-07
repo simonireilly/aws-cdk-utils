@@ -2,10 +2,19 @@
   "name": "@cdk-utils/utils",
   "description": "",
   "version": "0.0.1-alpha.61",
-  "author": "Simon",
   "dependencies": {
     "axios": "0.21.1"
   },
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "keywords": [
+    "aws-cdk"
+  ],
+  "repository": "https://github.com/simonireilly/aws-cdk-utils.git",
   "devDependencies": {
     "@cdk-utils/factories": "0.0.1-alpha.61",
     "@tsconfig/node14": "1.0.1",
@@ -21,7 +30,6 @@
   "files": [
     "dist/"
   ],
-  "keywords": [],
   "license": "ISC",
   "main": "dist/index.js",
   "scripts": {
