@@ -1,6 +1,6 @@
 {
   "name": "@cdk-utils/utils",
-  "description": "",
+  "description": "Collection of utilities used across @cdk-utils",
   "version": "0.0.1-alpha.66",
   "author": {
     "url": "https://github.com/simonireilly",
@@ -11,7 +11,7 @@
     "axios": "0.21.1"
   },
   "devDependencies": {
-    "@cdk-utils/factories": "^0.0.1-alpha.66",
+    "@cdk-utils/factories": "0.0.1-alpha.66",
     "@tsconfig/node14": "1.0.1",
     "@types/jest": "26.0.10",
     "jest": "26.4.2",
