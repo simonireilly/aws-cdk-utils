@@ -6693,7 +6693,7 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-embedme@^1.22.0:
+embedme@1.22.0:
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/embedme/-/embedme-1.22.0.tgz#d197ca86eca1ade95b72bd033e900597ff2b47d5"
   integrity sha512-WBQnZkgFc/egR+KeC+f382f76dwlLRU6+h2MwWkogYX8lqZeHoYm67pvk6TCTs99W+tC6IiRqUJySwfvclAvYQ==
