@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Install node version
         uses: actions/setup-node@v2
@@ -20,17 +22,23 @@ jobs:
           node-version: "14"
           cache: "yarn"
 
+      - name: Configure publishing user
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+
       - run: yarn install
 
       - run: yarn lerna bootstrap
 
-      - name: Configure publishing user
+      - name: Configure authentication for NPM
         run: |
-          git config --global user.email "simonireilly@gmail.com"
-          git config --global user.name "@simonireilly"
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Prerelease Check
-        run: yarn lerna publish prerelease --no-push --no-git-tag-version --dist-tag canary --no-verify-access --yes
+        run: yarn lerna publish prerelease --no-push --no-git-tag-version --dist-tag canary --yes
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
