@@ -1,6 +1,7 @@
 __test__
 *.tsbuildinfo
 jest.config.js
+tsconfig.json
 
 # CDK asset staging directory
 .cdk.staging
