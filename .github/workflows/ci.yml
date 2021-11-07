@@ -5,6 +5,33 @@ on:
 name: Lint, Build, Test
 
 jobs:
+  pre-release-check:
+    name: Check code is releasable
+    runs-on: ubuntu-latest
+    environment: preview
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install node version
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "yarn"
+
+      - run: yarn lerna bootstrap
+
+      - name: Configure publishing user
+        run: |
+          git config --global user.email "simonireilly@gmail.com"
+          git config --global user.name "@simonireilly"
+
+      - name: Prerelease Check
+        run: yarn lerna publish prerelease --no-push --no-git-tag-version --dist-tag canary --no-verify-access --yes
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
   ci:
     name: Continuous Integration
     runs-on: ubuntu-latest
@@ -25,13 +52,3 @@ jobs:
       - run: yarn build
 
       - run: yarn test
-
-      - name: Configure publishing user
-        run: |
-          git config --global user.email "simonireilly@gmail.com"
-          git config --global user.name "@simonireilly"
-
-      - name: Prerelease Check
-        run: yarn lerna publish prerelease --no-push --no-git-tag-version --dist-tag canary --no-verify-access --yes
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
