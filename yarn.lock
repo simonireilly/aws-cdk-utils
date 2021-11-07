@@ -2696,21 +2696,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdk-utils/utils@^0.0.1-alpha.64":
-  version "0.0.1-alpha.65"
-  resolved "https://registry.yarnpkg.com/@cdk-utils/utils/-/utils-0.0.1-alpha.65.tgz#58c9eb5e86b1ed3d1f444749a256f779d8234346"
-  integrity sha512-87pnNOvtUZ5zmT7g+WZ2iDTVdXpuINRU/R51cl7rx/A7lUUImgCp8bSEnnop0ghmJJrvwq9sHxQ2valg8za2TQ==
-  dependencies:
-    axios "0.21.1"
-
-"@cdk-utils/vercel-secret-forwarder@0.0.1-alpha.64":
-  version "0.0.1-alpha.64"
-  resolved "https://registry.yarnpkg.com/@cdk-utils/vercel-secret-forwarder/-/vercel-secret-forwarder-0.0.1-alpha.64.tgz#8066f690121732f6db1aeccbf134afa6ecd1075a"
-  integrity sha512-Fzx1WT/mpjCC2pTwBvweYWWcCbWKDbUbejsMzguQ1tYfXuonfuLxZlgQ4LwbuC8+b0hsnOdEzX/O4s9SnPmvpg==
-  dependencies:
-    "@cdk-utils/utils" "^0.0.1-alpha.64"
-    axios "0.21.1"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
