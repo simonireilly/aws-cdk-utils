@@ -29,6 +29,7 @@
   "repository": "https://github.com/simonireilly/aws-cdk-utils.git",
   "scripts": {
     "build": "lerna run build -- -v",
+    "canary": "yarn lerna publish prerelease --dist-tag canary",
     "embed": "embedme './packages/**/README.md'",
     "new:package": "hygen workspace-package new",
     "prepare": "husky install",

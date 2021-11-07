@@ -1,13 +1,13 @@
 {
   "name": "@cdk-utils/vercel-secret-forwarder",
-  "version": "0.0.1-alpha.62",
+  "version": "0.0.1-alpha.65",
   "author": {
     "url": "https://github.com/simonireilly",
     "email": "simonireilly@gmail.com",
     "name": "Simon Reilly"
   },
   "dependencies": {
-    "@cdk-utils/utils": "0.0.1-alpha.62",
+    "@cdk-utils/utils": "0.0.1-alpha.65",
     "axios": "0.21.1"
   },
   "devDependencies": {
@@ -25,8 +25,9 @@
     "node": ">=14 <15"
   },
   "files": [
-    "lib/vercel/index.ts"
+    "lib/vercel/*.ts"
   ],
+  "gitHead": "9f49922bb915f11a6133758f8f68cc673d6f55e8",
   "homepage": "https://github.com/simonireilly/aws-cdk-utils",
   "keywords": [
     "aws-cdk"
