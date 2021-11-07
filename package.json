@@ -15,6 +15,21 @@
     "node": ">=14 <15"
   },
   "private": true,
+  "keywords": [
+    "aws-cdk"
+  ],
+  "author": {
+    "url": "https://github.com/simonireilly",
+    "email": "simonireilly@gmail.com",
+    "name": "Simon Reilly"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonireilly/aws-cdk-utils.git"
+  },
+  "homepage": "https://github.com/simonireilly/aws-cdk-utils",
+  "bugs": "https://github.com/simonireilly/aws-cdk-utils/issues",
+  "license": "MIT",
   "scripts": {
     "build": "lerna run build -- -v",
     "embed": "embedme './packages/**/README.md'",
