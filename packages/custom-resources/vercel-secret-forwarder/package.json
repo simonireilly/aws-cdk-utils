@@ -1,13 +1,13 @@
 {
   "name": "@cdk-utils/vercel-secret-forwarder",
-  "version": "0.0.1-alpha.62",
+  "version": "0.0.1-alpha.63",
   "author": {
     "url": "https://github.com/simonireilly",
     "email": "simonireilly@gmail.com",
     "name": "Simon Reilly"
   },
   "dependencies": {
-    "@cdk-utils/utils": "0.0.1-alpha.62",
+    "@cdk-utils/utils": "^0.0.1-alpha.63",
     "axios": "0.21.1"
   },
   "devDependencies": {
