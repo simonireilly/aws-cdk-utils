@@ -1,3 +1,4 @@
 __test__
 jest.config.js
 *.tsbuildinfo
+tsconfig.json
