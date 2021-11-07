@@ -26,6 +26,6 @@ jobs:
 
       - run: yarn test
 
-      - run: yarn lerna publish prerelease
+      - run: yarn lerna publish prerelease --yes
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
