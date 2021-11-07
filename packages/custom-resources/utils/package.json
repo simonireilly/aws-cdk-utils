@@ -11,7 +11,7 @@
     "axios": "0.21.1"
   },
   "devDependencies": {
-    "@cdk-utils/factories": "^0.0.1-alpha.65",
+    "@cdk-utils/factories": "0.0.1-alpha.65",
     "@tsconfig/node14": "1.0.1",
     "@types/jest": "26.0.10",
     "jest": "26.4.2",
@@ -25,6 +25,7 @@
   "files": [
     "dist/"
   ],
+  "gitHead": "9f49922bb915f11a6133758f8f68cc673d6f55e8",
   "homepage": "https://github.com/simonireilly/aws-cdk-utils",
   "keywords": [
     "aws-cdk"
@@ -38,6 +39,5 @@
     "prepare": "yarn build",
     "test": "jest"
   },
-  "types": "dist/index.d.ts",
-  "gitHead": "9f49922bb915f11a6133758f8f68cc673d6f55e8"
+  "types": "dist/index.d.ts"
 }

@@ -36,6 +36,5 @@
     "prepare": "yarn build",
     "test": "jest"
   },
-  "types": "dist/index.d.ts",
-  "gitHead": "9f49922bb915f11a6133758f8f68cc673d6f55e8"
+  "types": "dist/index.d.ts"
 }
