@@ -11,7 +11,7 @@
     "axios": "0.21.1"
   },
   "devDependencies": {
-    "@cdk-utils/factories": "^0.0.1-alpha.62",
+    "@cdk-utils/factories": "0.0.1-alpha.62",
     "@tsconfig/node14": "1.0.1",
     "@types/jest": "26.0.10",
     "jest": "26.4.2",
