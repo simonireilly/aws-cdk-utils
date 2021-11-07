@@ -1,7 +1,7 @@
 {
   "name": "@cdk-utils/factories",
   "description": "",
-  "version": "0.0.1-alpha.63",
+  "version": "0.0.1-alpha.65",
   "author": {
     "url": "https://github.com/simonireilly",
     "email": "simonireilly@gmail.com",
@@ -36,5 +36,6 @@
     "prepare": "yarn build",
     "test": "jest"
   },
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "gitHead": "9f49922bb915f11a6133758f8f68cc673d6f55e8"
 }
