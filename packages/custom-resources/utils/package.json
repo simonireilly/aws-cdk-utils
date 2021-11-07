@@ -1,6 +1,6 @@
 {
   "name": "@cdk-utils/utils",
-  "description": "",
+  "description": "Collection of utilities used across @cdk-utils",
   "version": "0.0.1-alpha.66",
   "author": {
     "url": "https://github.com/simonireilly",

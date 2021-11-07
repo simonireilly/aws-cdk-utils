@@ -13,6 +13,9 @@ A Cloudformation custom resource that can be used to forward the output from sta
 - Returns a function to bind in secrets to set in the custom resource
 
 
+![Design to forward from secure AWS to Vercel](design.drawio.svg)
+
+
 ## Example
 
 A full example can be found here, which utilizes serverless stack to deploy a cognito pool, and send the required credentials to the vercel preview deploy.
