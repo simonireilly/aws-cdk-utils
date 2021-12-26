@@ -14,6 +14,7 @@
     "syncpack": "5.8.15"
   },
   "devDependencies": {
+    "commitizen": "4.2.4",
     "embedme": "1.22.0",
     "husky": "7.0.0"
   },
@@ -30,6 +31,7 @@
   "scripts": {
     "build": "lerna run build -- -v",
     "canary": "yarn lerna publish prerelease --dist-tag canary",
+    "commit": "cz",
     "embed": "embedme './packages/**/README.md'",
     "new:package": "hygen workspace-package new",
     "prepare": "husky install",

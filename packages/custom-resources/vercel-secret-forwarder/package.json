@@ -7,7 +7,7 @@
     "name": "Simon Reilly"
   },
   "dependencies": {
-    "@cdk-utils/utils": "^0.0.1-alpha.68",
+    "@cdk-utils/utils": "0.0.1-alpha.68",
     "axios": "0.21.1"
   },
   "devDependencies": {
