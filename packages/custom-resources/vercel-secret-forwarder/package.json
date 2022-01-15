@@ -16,8 +16,9 @@
     "@aws-cdk/core": "1.126.0",
     "@types/aws-lambda": "8.10.82",
     "@types/jest": "26.0.10",
-    "@types/node": "10.17.27",
+    "@types/node": "16.11.6",
     "jest": "26.4.2",
+    "nock": "13.1.4",
     "ts-jest": "26.2.0",
     "typescript": "4.4.4"
   },
@@ -38,7 +39,7 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "prepare": "yarn build",
+    "prepare": "yarn clean && yarn build",
     "test": "jest",
     "watch": "tsc -w"
   },
