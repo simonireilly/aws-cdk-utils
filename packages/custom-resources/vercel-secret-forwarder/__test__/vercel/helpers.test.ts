@@ -1,5 +1,17 @@
 import { deleteSecretBranch } from '../../lib/vercel/helpers';
-import nock from 'nock';
+import * as nock from 'nock';
+
+const vercelGetNock = () => {
+  nock('https://api.vercel.com:443')
+    .get('/v8/projects/ab6ef546ebc4fa/env')
+    .reply(200, {
+      envs: [{}],
+    });
+};
+
+const vercelPatchNock = () => {
+  nock('https://api.vercel.com:443').patch('/v8/projects/ab6ef546ebc4fa/env');
+};
 
 describe('vercel secrets helpers', () => {
   describe('deleting all secrets for a branch', () => {
@@ -20,6 +32,9 @@ describe('vercel secrets helpers', () => {
         gitBranch: 'feat/integration-tests',
         projectId: 'ab6ef546ebc4fa',
       });
+
+      vercelGetNock();
+      vercelPatchNock();
 
       const response = await promise;
     });
