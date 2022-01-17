@@ -43,9 +43,6 @@
     "packages": [
       "packages/**/*",
       "examples/*"
-    ],
-    "nohoist": [
-      "**/*"
     ]
   }
 }

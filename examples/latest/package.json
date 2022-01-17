@@ -19,7 +19,6 @@
     "deploy": "sst deploy",
     "diagram": "cdk-dia --tree .build/cdk.out/tree.json",
     "remove": "sst remove",
-    "start": "sst start",
-    "test": "sst test"
+    "start": "sst start"
   }
 }
