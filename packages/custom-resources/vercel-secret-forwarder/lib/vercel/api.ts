@@ -4,7 +4,7 @@ type VercelTargets = 'preview' | 'development' | 'production';
 
 const BASE_URL = 'https://api.vercel.com';
 
-namespace VercelApi {
+export namespace VercelApi {
   export interface GetResponse {
     envs: Env[];
   }
@@ -14,7 +14,7 @@ namespace VercelApi {
     id: string;
     key: string;
     value: string;
-    target: string[];
+    target: VercelTargets[];
     gitBranch: string | null;
     configurationId?: string | null;
     updatedAt: number;
